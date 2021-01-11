@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+## GCC Front-End For Rust
 
-You can use the [editor on GitHub](https://github.com/Rust-GCC/Rust-GCC.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+This is a full alternative implementaion of the Rust language ontop of GCC which the goal to become fully upstream with the GNU toolchain.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+As this is a front-end project, the compiler will gain full access to all of GCCs internal middle-end optimization passes which are distinct from LLVM. For example, users of this compiler can expect to use the familiar -O2 flags to tune GCC’s optimizer. Going forward, we will be happy to see more LLVM vs GCC graphs in respect to compilation speed, resulting code size and performance. 
 
-### Markdown
+You can find compiler status reports over on: https://github.com/Rust-GCC/Reporting. The project is still in an early phase with the goal to compile the offical rust test suite. There are no immediate plans for a borrow checker as this is not required to compile rust code and is the last pass in the RustC compiler. This can be handled as a sperate project when we get to that point.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Developers
 
-```markdown
-Syntax highlighted code block
+* [Philip Herron](https://github.com/philberty/) https://thephilbert.io/
+* [SimplyTheOther](https://github.com/simplytheother)
+* [Nala Ginrut](https://github.com/NalaGinrut)  https://nalaginrut.com/index
 
-# Header 1
-## Header 2
-### Header 3
+### Get Involved
 
-- Bulleted
-- List
+As this is destined to be upstreamed to GCC we require copyright assignment: https://gcc.gnu.org/contribute.html. Not all contributions must be code, please try it out and feed us bugs.
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Rust-GCC/Rust-GCC.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Github: https://github.com/Rust-GCC
+Zulip: https://gcc-rust.zulipchat.com/
+Twitter: https://twitter.com/gcc_rust
