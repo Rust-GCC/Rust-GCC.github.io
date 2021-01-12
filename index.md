@@ -6,7 +6,7 @@ As this is a front-end project, the compiler will gain full access to all of GCC
 
 The project is still in an early phase with the goal to compile the offical rust test suite. There are no immediate plans for a borrow checker as this is not required to compile rust code and is the last pass in the RustC compiler. This can be handled as a sperate project when we get to that point.
 
-You can find compiler status reports over on: [https://github.com/Rust-GCC/Reporting](https://github.com/Rust-GCC/Reporting and [https://thephilbert.io/](https://thephilbert.io/)
+You can find compiler status reports over on: [https://github.com/Rust-GCC/Reporting](https://github.com/Rust-GCC/Reporting) and [https://thephilbert.io/](https://thephilbert.io/)
 
 ### Thanks
 
