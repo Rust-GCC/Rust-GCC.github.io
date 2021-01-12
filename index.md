@@ -4,7 +4,9 @@ This is a full alternative implementaion of the Rust language ontop of GCC which
 
 As this is a front-end project, the compiler will gain full access to all of GCCs internal middle-end optimization passes which are distinct from LLVM. For example, users of this compiler can expect to use the familiar -O2 flags to tune GCC’s optimizer. Going forward, we will be happy to see more LLVM vs GCC graphs in respect to compilation speed, resulting code size and performance. 
 
-You can find compiler status reports over on: https://github.com/Rust-GCC/Reporting. The project is still in an early phase with the goal to compile the offical rust test suite. There are no immediate plans for a borrow checker as this is not required to compile rust code and is the last pass in the RustC compiler. This can be handled as a sperate project when we get to that point.
+The project is still in an early phase with the goal to compile the offical rust test suite. There are no immediate plans for a borrow checker as this is not required to compile rust code and is the last pass in the RustC compiler. This can be handled as a sperate project when we get to that point.
+
+You can find compiler status reports over on: [https://github.com/Rust-GCC/Reporting](https://github.com/Rust-GCC/Reporting and [https://thephilbert.io/](https://thephilbert.io/)
 
 ### Thanks
 
@@ -14,9 +16,9 @@ We apreciate all feedback from individuals on github.
 
 ### Developers
 
-* [Philip Herron](https://github.com/philberty/) [https://thephilbert.io/](https://thephilbert.io/)
+* [Philip Herron](https://github.com/philberty/)
 * [SimplyTheOther](https://github.com/simplytheother)
-* [Nala Ginrut](https://github.com/NalaGinrut) [https://nalaginrut.com/index](https://nalaginrut.com/index)
+* [Nala Ginrut](https://github.com/NalaGinrut)
 
 ### Get Involved
 
