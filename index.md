@@ -1,6 +1,6 @@
 ## GCC Front-End For Rust
 
-This is a full alternative implementaion of the Rust language ontop of GCC which the goal to become fully upstream with the GNU toolchain.
+This is a full alternative implementaion of the Rust language ontop of GCC with the goal to become fully upstream with the GNU toolchain.
 
 As this is a front-end project, the compiler will gain full access to all of GCCs internal middle-end optimization passes which are distinct from LLVM. For example, users of this compiler can expect to use the familiar -O2 flags to tune GCC’s optimizer. Going forward, we will be happy to see more LLVM vs GCC graphs in respect to compilation speed, resulting code size and performance. 
 
