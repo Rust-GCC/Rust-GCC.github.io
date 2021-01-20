@@ -8,6 +8,10 @@ The project is still in an early phase with the goal to compile the offical rust
 
 You can find compiler status reports over on: [https://github.com/Rust-GCC/Reporting](https://github.com/Rust-GCC/Reporting) and [https://thephilbert.io/](https://thephilbert.io/)
 
+### FAQ
+
+For frequently asked questions please see: [https://github.com/Rust-GCC/gccrs/wiki/Frequently-Asked-Questions](https://github.com/Rust-GCC/gccrs/wiki/Frequently-Asked-Questions)
+
 ### Thanks
 
 Thank you to [Open Source Security Inc.](https://www.opensrcsec.com/) and [Embecosm](https://www.embecosm.com/) for sponsering this project to move forward.
