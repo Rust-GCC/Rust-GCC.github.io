@@ -2,9 +2,9 @@
 
 This is a full alternative implementation of the Rust language on top of GCC with the goal to become fully upstream with the GNU toolchain.
 
-As this is a front-end project, the compiler will gain full access to all of GCCs internal middle-end optimization passes which are distinct from LLVM. For example, users of this compiler can expect to use the familiar -O2 flags to tune GCC’s optimizer. Going forward, we will be happy to see more LLVM vs GCC graphs in respect to compilation speed, resulting code size and performance. 
+As this is a front-end project, the compiler will gain full access to all of GCC's internal middle-end optimization passes which are distinct from LLVM. For example, users of this compiler can expect to use the familiar -O2 flags to tune GCC’s optimizer. Going forward, we will be happy to see more LLVM vs GCC graphs in respect to compilation speed, resulting code size and performance. 
 
-The project is still in an early phase with the goal to compile the offical rust test suite. There are no immediate plans for a borrow checker as this is not required to compile rust code and is the last pass in the RustC compiler. This can be handled as a sperate project when we get to that point.
+The project is still in an early phase with the goal to compile the offical Rust test suite. There are no immediate plans for a borrow checker as this is not required to compile rust code and is the last pass in the RustC compiler. This can be handled as a separate project when we get to that point.
 
 You can find compiler status reports over on: [https://github.com/Rust-GCC/Reporting](https://github.com/Rust-GCC/Reporting) and [https://thephilbert.io/](https://thephilbert.io/)
 
@@ -14,7 +14,7 @@ For frequently asked questions please see: [https://github.com/Rust-GCC/gccrs/wi
 
 ### Thanks
 
-Thank you to [Open Source Security Inc.](https://www.opensrcsec.com/) and [Embecosm](https://www.embecosm.com/) for sponsering this project to move forward.
+Thank you to [Open Source Security Inc.](https://www.opensrcsec.com/) and [Embecosm](https://www.embecosm.com/) for sponsoring this project to move forward.
 
 We appreciate all feedback from individuals on github.
 
