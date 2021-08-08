@@ -22,7 +22,16 @@ We appreciate all feedback from individuals on github.
 
 * [Philip Herron](https://github.com/philberty/)
 * [SimplyTheOther](https://github.com/simplytheother)
+* [Mark Wielaard](https://gnu.wildebeest.org/blog/mjw/)
+* [Arthur Cohen](https://github.com/CohenArthur)
+* [Marc Poulhiès](https://github.com/dkm)
+* [Thomas Schwinge](https://github.com/tschwinge)
+* [Wenzhang Yang](https://github.com/thomasyonug)
+* [John Paul Adrian Glaubitz](https://github.com/glaubitz)
+* [Yizhe](https://github.com/YizhePKU)
 * [Nala Ginrut](https://github.com/NalaGinrut)
+
+Please feel free to raise a PR to add your names.
 
 ### Get Involved
 
