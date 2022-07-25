@@ -2,15 +2,20 @@
 
 This is a full alternative implementation of the Rust language on top of GCC with the goal to become fully upstream with the GNU toolchain.
 
-As this is a front-end project, the compiler will gain full access to all of GCCs internal middle-end optimization passes which are distinct from LLVM. For example, users of this compiler can expect to use the familiar -O2 flags to tune GCC’s optimizer. Going forward, we will be happy to see more LLVM vs GCC graphs in respect to compilation speed, resulting code size and performance. 
+As this is a front-end project, the compiler will gain full access to all of GCC's internal middle-end optimization passes which are distinct from LLVM. For example, users of this compiler can expect to use the familiar -O2 flags to tune GCC’s optimizer. Going forward, we will be happy to see more LLVM vs GCC graphs in respect to compilation speed, resulting code size and performance. 
 
-The project is still in an early phase with the goal to compile the official rust test suite. There are no immediate plans for a borrow checker as this is not required to compile rust code and is the last pass in the RustC compiler. This can be handled as a sperate project when we get to that point.
+
+The project is still in an early phase with the goal to compile the official Rust test suite. There are no immediate plans for a borrow checker as this is not required to compile rust code and is the last pass in the RustC compiler. This can be handled as a sperate project when we get to that point.
 
 You can find compiler status reports over on: [https://github.com/Rust-GCC/Reporting](https://github.com/Rust-GCC/Reporting) and [https://thephilbert.io/](https://thephilbert.io/)
 
+### FAQ
+
+For frequently asked questions please see: [https://github.com/Rust-GCC/gccrs/wiki/Frequently-Asked-Questions](https://github.com/Rust-GCC/gccrs/wiki/Frequently-Asked-Questions)
+
 ### Thanks
 
-Thank you to [Open Source Security Inc.](https://www.opensrcsec.com/) and [Embecosm](https://www.embecosm.com/) for sponsering this project to move forward.
+Thank you to [Open Source Security Inc.](https://www.opensrcsec.com/) and [Embecosm](https://www.embecosm.com/) for sponsoring this project to move forward.
 
 We appreciate all feedback from individuals on github.
 
@@ -18,7 +23,16 @@ We appreciate all feedback from individuals on github.
 
 * [Philip Herron](https://github.com/philberty/)
 * [SimplyTheOther](https://github.com/simplytheother)
+* [Mark Wielaard](https://gnu.wildebeest.org/blog/mjw/)
+* [Arthur Cohen](https://github.com/CohenArthur)
+* [Marc Poulhiès](https://github.com/dkm)
+* [Thomas Schwinge](https://github.com/tschwinge)
+* [Wenzhang Yang](https://github.com/thomasyonug)
+* [John Paul Adrian Glaubitz](https://github.com/glaubitz)
+* [Yizhe](https://github.com/YizhePKU)
 * [Nala Ginrut](https://github.com/NalaGinrut)
+
+Please feel free to raise a PR to add your names.
 
 ### Get Involved
 
