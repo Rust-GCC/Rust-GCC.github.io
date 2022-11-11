@@ -6,7 +6,11 @@ As this is a front-end project, the compiler will gain full access to all of GCC
 
 The project is still in an early phase with the goal to compile the offical Rust test suite. While there is no borrow-checker included with the compiler yet, we plan to integrate with the [`polonius`](https://github.com/rust-lang/polonius) effort and leverage its borrow-checking algorithms. 
 
-You can find compiler status reports over on: [https://github.com/Rust-GCC/Reporting](https://github.com/Rust-GCC/Reporting) and [https://thephilbert.io/](https://thephilbert.io/)
+You can find compiler status reports over on: [https://github.com/Rust-GCC/Reporting](https://github.com/Rust-GCC/Reporting), [https://thephilbert.io/](https://thephilbert.io/) as well as here in the next section.
+
+## Status reports
+
+* [October 2022 monthly report](reporting/2022-10-monthly-report.md)
 
 ### FAQ
 
