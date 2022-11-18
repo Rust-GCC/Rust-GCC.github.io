@@ -7,7 +7,7 @@ project.
 ### Milestone Progress
 
 This month saw a jump in productivity as we went back to a more regular
-schedule, after presenting the project\'s progress at several in-person
+schedule, after presenting the project's progress at several in-person
 conferences in September.
 
 We made great strides on multiple parts of the compiler, with Philip
@@ -68,7 +68,7 @@ compiling `libcore 1.49` properly.
     [PR1580](https://github.com/rust-gcc/gccrs/pull/1580)
 -   fix ICE on missing closing paren
     [PR1574](https://github.com/rust-gcc/gccrs/pull/1574)
--   Apply #1560 master
+-   Apply \#1560 master
     [PR1570](https://github.com/rust-gcc/gccrs/pull/1570)
 -   make: Inherit CXXFLAGS, guard against non g++ compilers for warnings
     [PR1556](https://github.com/rust-gcc/gccrs/pull/1556)
@@ -78,7 +78,7 @@ compiling `libcore 1.49` properly.
     [PR1608](https://github.com/rust-gcc/gccrs/pull/1608)
 -   Improve AST Fragment class
     [PR1607](https://github.com/rust-gcc/gccrs/pull/1607)
--   \[33/37\] lang-specs: Rename language spec \@rs -\> \@rust
+-   \[33/37\] lang-specs: Rename language spec @rs -\> @rust
     [PR1605](https://github.com/rust-gcc/gccrs/pull/1605)
 -   Add check for recursive trait cycles
     [PR1602](https://github.com/rust-gcc/gccrs/pull/1602)
@@ -88,7 +88,7 @@ compiling `libcore 1.49` properly.
     [PR1598](https://github.com/rust-gcc/gccrs/pull/1598)
 -   ast: Module: unloaded module and inner attributes
     [PR1597](https://github.com/rust-gcc/gccrs/pull/1597)
--   Add more implementations for TARGET~RUSTOSINFO~
+-   Add more implementations for TARGET<sub>RUSTOSINFO</sub>
     [PR1596](https://github.com/rust-gcc/gccrs/pull/1596)
 -   Support outer attribute handling on trait items just like normal
     items [PR1595](https://github.com/rust-gcc/gccrs/pull/1595)
@@ -104,18 +104,18 @@ compiling `libcore 1.49` properly.
     [PR1619](https://github.com/rust-gcc/gccrs/pull/1619)
 -   Add missing copyright headers
     [PR1618](https://github.com/rust-gcc/gccrs/pull/1618)
--   Apply #1605 on master (fix lang spec)
+-   Apply \#1605 on master (fix lang spec)
     [PR1617](https://github.com/rust-gcc/gccrs/pull/1617)
 -   Apply 1559 master (remove system includes)
     [PR1616](https://github.com/rust-gcc/gccrs/pull/1616)
--   intrinsics: Add early implementation for
-    atomic~storeseqcst,\ relaxed,\ release~
+-   intrinsics: Add early implementation for atomic<sub>storeseqcst,
+    relaxed, release</sub>
     [PR1615](https://github.com/rust-gcc/gccrs/pull/1615)
--   intrinsics: Add rust~sorry~ wrapper for unimplemented intrinsics
-    [PR1614](https://github.com/rust-gcc/gccrs/pull/1614)
+-   intrinsics: Add rust<sub>sorry</sub> wrapper for unimplemented
+    intrinsics [PR1614](https://github.com/rust-gcc/gccrs/pull/1614)
 -   builtins: Rename all bang macro handlers
     [PR1613](https://github.com/rust-gcc/gccrs/pull/1613)
--   Apply #1556 on master
+-   Apply \#1556 on master
     [PR1585](https://github.com/rust-gcc/gccrs/pull/1585)
 
 ### Contributors this month
@@ -128,28 +128,28 @@ compiling `libcore 1.49` properly.
 
 ### Overall Task Status
 
-  Category      Last Month   This Month   Delta
-  ------------- ------------ ------------ -------
-  TODO          168          180          +12
-  In Progress   28           31           +3
-  Completed     466          482          +16
+| Category    | Last Month | This Month | Delta |
+|-------------|------------|------------|-------|
+| TODO        | 168        | 180        | +12   |
+| In Progress | 28         | 31         | +3    |
+| Completed   | 466        | 482        | +16   |
 
 ### Test Case
 
-  TestCases   Last Month   This Month   Delta
-  ----------- ------------ ------------ -------
-  Passing     6794         6948         +154
-  Failed      \-           \-           \-
-  XFAIL       52           52           \-
-  XPASS       \-           \-           \-
+| TestCases | Last Month | This Month | Delta |
+|-----------|------------|------------|-------|
+| Passing   | 6794       | 6948       | +154  |
+| Failed    | \-         | \-         | \-    |
+| XFAIL     | 52         | 52         | \-    |
+| XPASS     | \-         | \-         | \-    |
 
 ### Bugs
 
-  Category      Last Month   This Month   Delta
-  ------------- ------------ ------------ -------
-  TODO          51           56           +5
-  In Progress   14           16           +2
-  Completed     210          214          +4
+| Category    | Last Month | This Month | Delta |
+|-------------|------------|------------|-------|
+| TODO        | 51         | 56         | +5    |
+| In Progress | 14         | 16         | +2    |
+| Completed   | 210        | 214        | +4    |
 
 ### Milestones Progress
 
@@ -166,39 +166,39 @@ account the tracking issues with dozens of unresolved items. Thus the
 percentage is computed using the sum of issues and tracked items done
 divided by the sums of issues and tracked items overall.
 
-  Milestone                           Last Week   This Week   Delta   Start Date       Completion Date   Target
-  ----------------------------------- ----------- ----------- ------- ---------------- ----------------- ---------------
-  Data Structures 1 - Core            100%        100%        \-      30th Nov 2020    27th Jan 2021     29th Jan 2021
-  Control Flow 1 - Core               100%        100%        \-      28th Jan 2021    10th Feb 2021     26th Feb 2021
-  Data Structures 2 - Generics        100%        100%        \-      11th Feb 2021    14th May 2021     28th May 2021
-  Data Structures 3 - Traits          100%        100%        \-      20th May 2021    17th Sept 2021    27th Aug 2021
-  Control Flow 2 - Pattern Matching   100%        100%        \-      20th Sept 2021   9th Dec 2021      29th Nov 2021
-  Macros and cfg expansion            100%        100%        \-      1st Dec 2021     31st Mar 2022     28th Mar 2022
-  Imports and Visibility              100%        100%        \-      29th Mar 2022    13th Jul 2022     27th May 2022
-  Const Generics                      76%         100%        +24%    30th May 2022    10th Oct 2022     17th Oct 2022
-  Intrinsics and builtins             15%         18%         +3%     6th Sept 2022    \-                14th Nov 2022
-  Initial upstream patches            0%          83%         +83%    10th Oct 2022    \-                13th Nov 2022
-  Final set of upstream patches       0%          6%          +6%     16th Nov 2022    \-                30th Apr 2023
-  Borrow checking                     0%          0%          \-      TBD              \-                TBD
-  Const Generics 2                    0%          0%          \-      TBD              \-                TBD
+| Milestone                         | Last Week | This Week | Delta | Start Date     | Completion Date | Target        |
+|-----------------------------------|-----------|-----------|-------|----------------|-----------------|---------------|
+| Data Structures 1 - Core          | 100%      | 100%      | \-    | 30th Nov 2020  | 27th Jan 2021   | 29th Jan 2021 |
+| Control Flow 1 - Core             | 100%      | 100%      | \-    | 28th Jan 2021  | 10th Feb 2021   | 26th Feb 2021 |
+| Data Structures 2 - Generics      | 100%      | 100%      | \-    | 11th Feb 2021  | 14th May 2021   | 28th May 2021 |
+| Data Structures 3 - Traits        | 100%      | 100%      | \-    | 20th May 2021  | 17th Sept 2021  | 27th Aug 2021 |
+| Control Flow 2 - Pattern Matching | 100%      | 100%      | \-    | 20th Sept 2021 | 9th Dec 2021    | 29th Nov 2021 |
+| Macros and cfg expansion          | 100%      | 100%      | \-    | 1st Dec 2021   | 31st Mar 2022   | 28th Mar 2022 |
+| Imports and Visibility            | 100%      | 100%      | \-    | 29th Mar 2022  | 13th Jul 2022   | 27th May 2022 |
+| Const Generics                    | 76%       | 100%      | +24%  | 30th May 2022  | 10th Oct 2022   | 17th Oct 2022 |
+| Intrinsics and builtins           | 15%       | 18%       | +3%   | 6th Sept 2022  | \-              | 14th Nov 2022 |
+| Initial upstream patches          | 0%        | 83%       | +83%  | 10th Oct 2022  | \-              | 13th Nov 2022 |
+| Final set of upstream patches     | 0%        | 6%        | +6%   | 16th Nov 2022  | \-              | 30th Apr 2023 |
+| Borrow checking                   | 0%        | 0%        | \-    | TBD            | \-              | TBD           |
+| Const Generics 2                  | 0%        | 0%        | \-    | TBD            | \-              | TBD           |
 
 ### Risks
 
-  Risk                             Impact (1-3)   Likelihood (0-10)   Risk (I \* L)   Mitigation
-  -------------------------------- -------------- ------------------- --------------- ------------------------------------------------
-  Missing GCC 13 upstream window   2              3                   6               Merge in GCC 14 and be proactive about reviews
+| Risk                           | Impact (1-3) | Likelihood (0-10) | Risk (I \* L) | Mitigation                                     |
+|--------------------------------|--------------|-------------------|---------------|------------------------------------------------|
+| Missing GCC 13 upstream window | 2            | 3                 | 6             | Merge in GCC 14 and be proactive about reviews |
 
 ### Testing project
 
-  Testsuite                       Compiler              Last month   This month   Success delta
-  ------------------------------- --------------------- ------------ ------------ ---------------
-  rustc testsuite                 gccrs -fsyntax-only   82.1%        82.2%        +0.1%
-  gccrs testsuite                 rustc stable          64.5%        64.2%        -0.1%
-  rustc testsuite passing tests   gccrs                 12.6%        12.3%        -0.3%
-  rustc testsuite (no~std~)       gccrs                 28.0%        27.6%        -0.4%
-  rustc testsuite (no~core~)      gccrs                 83.3%        33.3%        -50.0%
-  blake3                          gccrs                 25.0%        25.5%        \-
-  libcore                         gccrs                 0%           0%           \-
+| Testsuite                           | Compiler            | Last month | This month | Success delta |
+|-------------------------------------|---------------------|------------|------------|---------------|
+| rustc testsuite                     | gccrs -fsyntax-only | 82.1%      | 82.2%      | +0.1%         |
+| gccrs testsuite                     | rustc stable        | 64.5%      | 64.2%      | -0.1%         |
+| rustc testsuite passing tests       | gccrs               | 12.6%      | 12.3%      | -0.3%         |
+| rustc testsuite (no<sub>std</sub>)  | gccrs               | 28.0%      | 27.6%      | -0.4%         |
+| rustc testsuite (no<sub>core</sub>) | gccrs               | 83.3%      | 33.3%      | -50.0%        |
+| blake3                              | gccrs               | 25.0%      | 25.5%      | \-            |
+| libcore                             | gccrs               | 0%         | 0%         | \-            |
 
 ## Planned Activities
 
@@ -226,7 +226,7 @@ fragments of AST, and need to be expanded before further compiler
 passes, we need to be able to refer a macro invocation to its
 definition.
 
-This includes resolving \"simple\" examples such as the following:
+This includes resolving "simple" examples such as the following:
 
 ``` rust
 macro_rules! a { () => () };
@@ -248,14 +248,13 @@ the_famous_lazy_macro! {
 }
 ```
 
-However, it does not make sense to perform a \"full\" name resolution at
+However, it does not make sense to perform a "full" name resolution at
 this point: macro expansion will generate new tokens, which could then
 benefit from a later resolution. Furthermore, the macro lexical scope is
 quite simple compared to the type scope of name scope and has slightly
-different rules. This explains why name resolution is \"split in two\"
-in `rustc`: One part takes care of resolving macro invocations and
-imports, and the other takes care of resolving types, variables,
-function calls...
+different rules. This explains why name resolution is "split in two" in
+`rustc`: One part takes care of resolving macro invocations and imports,
+and the other takes care of resolving types, variables, function calls…
 
 From this point onward, we will refer to the `Early Name Resolution` as
 the pass responsible for resolving imports and macro invocations, and to
@@ -283,7 +282,7 @@ resolution pass away from the expansion pass.
     and expanding macros: we run the early name resolver, run the macro
     expander, check if anything has changed, and do it again.
 
-    Let\'s look at an example of how the two systems differ, given this
+    Let's look at an example of how the two systems differ, given this
     piece of code, and assuming that all these macro invocations expand
     to their input.
 
@@ -399,15 +398,17 @@ resolution pass away from the expansion pass.
     The code responsible for performing this dance looks a bit like the
     following.
 
-        auto enr = EarlyNameResolver();
-        auto expander = MacroExpander();
+    ``` cpp
+    auto enr = EarlyNameResolver();
+    auto expander = MacroExpander();
 
-        do {
-            enr.go(crate);
-            expander.go(crate);
-        } while (expander.has_changed() && !recursion_limit_reached());
+    do {
+        enr.go(crate);
+        expander.go(crate);
+    } while (expander.has_changed() && !recursion_limit_reached());
+    ```
 
-    It\'s a really simple and robust system, which helps clean up the
+    It's a really simple and robust system, which helps clean up the
     code a lot.
 
 2.  The problem
@@ -428,7 +429,7 @@ resolution pass away from the expansion pass.
     }
     ```
 
-    ...and this is the one remaining feature that the fixed-point system
+    …and this is the one remaining feature that the fixed-point system
     has to be able to deal with before we integrate it into the
     compiler, hopefully soon!
 
@@ -453,7 +454,7 @@ intrinsic](https://doc.rust-lang.org/core/intrinsics/fn.copy_nonoverlapping.html
 informs us that it is equivalent to a `memcpy` in C, with the argument
 order swapped. Furthermore, the `count` parameter refers to the number
 of values to copy, not the amount of bytes. We can thus make use of
-GCC\'s `__builtin_memcpy` to create the following function block:
+GCC's `__builtin_memcpy` to create the following function block:
 
 ``` rust
 pub fn copy_nonoverlapping<T>(src: *const T, dst: *mut T, count: usize) {
@@ -474,8 +475,8 @@ encountered some fun limitations.
     value between 0 and 3 indicating how local the data should be kept
     cache-wise.
 
-    This maps quite nicely to GCC\'s `__builtin_prefetch`, whose
-    \"declaration\" would look like the following:
+    This maps quite nicely to GCC's `__builtin_prefetch`, whose
+    "declaration" would look like the following:
 
     ``` c
     void __builtin_prefetch(const void *addr, int rw, int locality);
@@ -495,9 +496,9 @@ encountered some fun limitations.
 
     but an error arises when trying to compile them. For its locality
     argument, `__builtin_prefetch` expects a compile time constant,
-    which it cannot reliably get from the function\'s argument. This
+    which it cannot reliably get from the function's argument. This
     causes a verification pass in our gimplification (a lowering pass in
-    GCC\'s middle-end) to throw an error and fail the compilation.
+    GCC's middle-end) to throw an error and fail the compilation.
 
     Interestingly, a similar limitation is present with `rustc` and
     `LLVM`, [but will appear further down the compilation
@@ -506,11 +507,11 @@ encountered some fun limitations.
     This is no-doubt due to our lack of proper constant folding: GCC is
     able to tell that a call to `prefetch_read_data(addr, 3)` is valid
     and contains a compile-time constant, but we simply do not yet give
-    it the possiblity. Thanks to this year GSOC\'s student [Faisal
+    it the possiblity. Thanks to this year GSOC's student [Faisal
     Abbas](https://github.com/abbasfaisal), we should be able to hook
     into that constant evaluator and try to extract a constant value if
     possible.
 
     If intrinsics piqued your interest, feel free to come on our Zulip
     channel and discuss the work left to be done. There are plenty to
-    implement and we\'d love the extra help!
+    implement and we'd love the extra help!
