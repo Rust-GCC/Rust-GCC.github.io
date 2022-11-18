@@ -10,7 +10,7 @@ You can find compiler status reports over on: [https://github.com/Rust-GCC/Repor
 
 ## Status reports
 
-* [October 2022 monthly report](reporting/2022-10-monthly-report.md)
+* [October 2022 monthly report](/reporting/2022-10-monthly-report.md)
 
 ### FAQ
 
