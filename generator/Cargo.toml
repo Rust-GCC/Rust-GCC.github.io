@@ -1,0 +1,9 @@
+[package]
+name = "generator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.0.26", features = [ "derive", "env"] }
+git2 = "0.15.0"
+mktemp = "0.5.0"
