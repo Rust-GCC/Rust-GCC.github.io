@@ -20,9 +20,7 @@ fn main() -> Result<(), Error> {
     let reports_org_path = reports::clone(cli.reports)?;
     let reports_org_list = reports::find(reports_org_path)?;
     for report in reports_org_list {
-        dbg!(&report);
-        let new_md_report = reports::convert(report)?;
-        dbg!(new_md_report);
+        let report_md = reports::convert(report, &cli.website)?;
         // add_report_to_website(new_md_report)?;
     }
     Ok(())

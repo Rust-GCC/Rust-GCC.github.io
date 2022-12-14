@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 
 use std::fs;
@@ -26,8 +26,11 @@ pub fn find(reports_org_path: PathBuf) -> Result<Vec<PathBuf>, Error> {
     Ok(results)
 }
 
-pub fn convert(report_org_path: PathBuf) -> Result<PathBuf, Error> {
-    let mut report_md_path = report_org_path.clone();
+pub fn convert(report_org_path: PathBuf, website: &Path) -> Result<PathBuf, Error> {
+    let mut report_md_path = website
+        .join("reporting")
+        .join(PathBuf::from(report_org_path.clone().file_name().unwrap()));
+    dbg!(&report_md_path);
     report_md_path.set_extension("md");
     Command::new("pandoc")
         .arg("--from=org")
