@@ -2,3 +2,5 @@ title: GCC Front-End For Rust
 description: Alternative Rust Compiler for GCC
 logo: /images/logo.png
 theme: jekyll-theme-minimal
+plugins:
+  - jekyll-feed
