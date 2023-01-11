@@ -1,4 +1,9 @@
-## GCC Front-End For Rust
+---
+layout: default
+title: GCC Front-End For Rust
+---
+
+# GCC Front-End For Rust
 
 This is a full alternative implementation of the Rust language on top of GCC with the goal to become fully upstream with the GNU toolchain.
 
@@ -10,9 +15,13 @@ You can find compiler status reports over on: [https://github.com/Rust-GCC/Repor
 
 ## Status reports
 
-* [2022 Yearly report](/reporting/2022-year-report.md)
-* [November 2022 monthly report](/reporting/2022-11-monthly-report.md)
-* [October 2022 monthly report](/reporting/2022-10-monthly-report.md)
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
 
 ### FAQ
 
@@ -46,3 +55,7 @@ As this is destined to be upstreamed to GCC we require copyright assignment: [ht
 * Github: [https://github.com/Rust-GCC](https://github.com/Rust-GCC)
 * Zulip: [https://gcc-rust.zulipchat.com/](https://gcc-rust.zulipchat.com/)
 * Twitter: [https://twitter.com/gcc_rust](https://twitter.com/gcc_rust)
+
+### RSS
+
+You can stay updated on our progress with this [RSS feed](/feed.xml).
