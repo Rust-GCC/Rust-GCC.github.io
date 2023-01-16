@@ -15,8 +15,9 @@ You can find compiler status reports over on: [https://github.com/Rust-GCC/Repor
 
 ## Status reports
 
+{% assign sorted_posts = site.posts | sort: "date" | reverse %}
 <ul>
-  {% for post in site.posts %}
+  {% for post in sorted_posts %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
