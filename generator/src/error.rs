@@ -2,6 +2,8 @@
 pub enum Error {
     CloneFail(git2::Error),
     IO(std::io::Error),
+    InvalidDatePrefix,
+    NoDateInOrgReport,
 }
 
 impl From<git2::Error> for Error {

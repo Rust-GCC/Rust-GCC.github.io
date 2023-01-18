@@ -26,11 +26,29 @@ pub fn find(reports_org_path: PathBuf) -> Result<Vec<PathBuf>, Error> {
     Ok(results)
 }
 
+fn get_date(report_org_path: &Path) -> Result<String, Error> {
+    let content = fs::read_to_string(report_org_path)?;
+    for line in content.lines() {
+        if line.starts_with("#+date:") {
+            let date = line
+                .split(':')
+                .nth(1)
+                .ok_or(Error::InvalidDatePrefix)?
+                .trim()
+                .to_string();
+            return Ok(date);
+        }
+    }
+    Err(Error::NoDateInOrgReport)
+}
+
 pub fn convert(report_org_path: PathBuf, website: &Path) -> Result<PathBuf, Error> {
+    let mut report_md_filename = get_date(&report_org_path)?;
+    report_md_filename.push_str("-");
+    report_md_filename.push_str(report_org_path.file_name().unwrap().to_str().unwrap());
     let mut report_md_path = website
-        .join("reporting")
-        .join(PathBuf::from(report_org_path.clone().file_name().unwrap()));
-    dbg!(&report_md_path);
+        .join("_posts")
+        .join(PathBuf::from(report_md_filename));
     report_md_path.set_extension("md");
     Command::new("pandoc")
         .arg("--from=org")
@@ -39,5 +57,6 @@ pub fn convert(report_org_path: PathBuf, website: &Path) -> Result<PathBuf, Erro
         .arg("-o")
         .arg(&report_md_path)
         .spawn()?;
+    dbg!(&report_md_path);
     Ok(report_md_path)
 }
