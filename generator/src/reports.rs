@@ -33,13 +33,13 @@ fn get_date(report_org_path: &Path) -> Result<String, Error> {
             let date = line
                 .split(':')
                 .nth(1)
-                .ok_or(Error::InvalidDatePrefix)?
+                .ok_or(Error::InvalidDatePrefix(report_org_path.to_path_buf(), line.to_string()))?
                 .trim()
                 .to_string();
             return Ok(date);
         }
     }
-    Err(Error::NoDateInOrgReport)
+    Err(Error::NoDateInOrgReport(report_org_path.to_path_buf()))
 }
 
 pub fn convert(report_org_path: PathBuf, website: &Path) -> Result<PathBuf, Error> {

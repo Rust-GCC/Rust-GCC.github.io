@@ -1,9 +1,11 @@
+use std::path::PathBuf;
+
 #[derive(Debug)]
 pub enum Error {
     CloneFail(git2::Error),
     IO(std::io::Error),
-    InvalidDatePrefix,
-    NoDateInOrgReport,
+    InvalidDatePrefix(PathBuf, String),
+    NoDateInOrgReport(PathBuf),
 }
 
 impl From<git2::Error> for Error {
