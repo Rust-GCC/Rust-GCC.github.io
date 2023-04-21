@@ -34,20 +34,17 @@ Thank you to [Open Source Security Inc.](https://www.opensrcsec.com/) and [Embec
 
 We appreciate all feedback from individuals on github.
 
-### Developers
+### GCC Rust Core Team
 
 * [Philip Herron](https://github.com/philberty/)
+* [Arthur Cohen](https://github.com/CohenArthur)
+* [Thomas Schwinge](https://github.com/tschwinge)
 * [SimplyTheOther](https://github.com/simplytheother)
 * [Mark Wielaard](https://gnu.wildebeest.org/blog/mjw/)
-* [Arthur Cohen](https://github.com/CohenArthur)
 * [Marc Poulhiès](https://github.com/dkm)
-* [Thomas Schwinge](https://github.com/tschwinge)
+* [David Faust](https://github.com/dafaust)
 * [Wenzhang Yang](https://github.com/thomasyonug)
-* [John Paul Adrian Glaubitz](https://github.com/glaubitz)
-* [Yizhe](https://github.com/YizhePKU)
-* [Nala Ginrut](https://github.com/NalaGinrut)
-
-Please feel free to raise a PR to add your names.
+* [Philipp Krones](https://github.com/flip1995)
 
 ### Get Involved
 
