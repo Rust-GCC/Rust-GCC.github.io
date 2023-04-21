@@ -48,8 +48,6 @@ We appreciate all feedback from individuals on github.
 
 ### Get Involved
 
-As this is destined to be upstreamed to GCC we require copyright assignment: [https://gcc.gnu.org/contribute.html](https://gcc.gnu.org/contribute.html). Not all contributions must be code, please try it out and feed us bugs.
-
 * Github: [https://github.com/Rust-GCC](https://github.com/Rust-GCC)
 * Zulip: [https://gcc-rust.zulipchat.com/](https://gcc-rust.zulipchat.com/)
 * Twitter: [https://twitter.com/gcc_rust](https://twitter.com/gcc_rust)
