@@ -9,4 +9,3 @@ The easiest way is to use the jekyll docker image if you are not familiar with j
 ```shell
 docker run --rm -it -e UID=$(id -u) -e GID=$(id -g) -p 4000:4000 -v $(pwd):/srv/jekyll jekyll/builder bash -c 'bundle install && jekyll serve'
 ```
-
