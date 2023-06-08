@@ -1,95 +1,53 @@
-<!-- The Head -->
+<!--
+  The Head
+  © 2017-2019 Cotes Chung
+  MIT License
+-->
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta
-    name="viewport"
-    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
-  >
-
-  {% capture seo_tags %}
-    {% seo title=false %}
-  {% endcapture %}
-
-  {% if page.image %}
-    {% assign img = page.image.path | default: page.image %}
-
-    {% unless img contains '://' %}
-      {% assign img_path = page.img_path | append: '/' | append: img | replace: '//', '/' %}
-      {% capture target %}"{{ img | absolute_url }}"{% endcapture %}
-
-      {% if site.img_cdn contains '//' %}
-        <!-- it's a cross-origin URL -->
-        {% capture replacement %}"{{ site.img_cdn }}{{ img_path }}"{% endcapture %}
-      {% else %}
-        <!-- it's a local file path -->
-        {%- capture replacement -%}
-          "{{ site.img_cdn | append: '/' | append: img_path | replace: '//', '/' | absolute_url }}"
-        {%- endcapture -%}
-      {% endif %}
-
-      {% assign seo_tags = seo_tags | replace: target, replacement %}
-    {% endunless %}
-  {% endif %}
-
-  {{ seo_tags }}
-
   <title>
-    {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
-    {%- endunless -%}
-    {{ site.title }}
+    {%- if page.layout == "home" -%}
+      {{- site.title -}}
+    {%- else -%}
+      {{ page.title }} | {{ site.title }}
+    {%- endif -%}
   </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {% seo title=false %}
 
   {% include favicons.html %}
 
-  {% if site.resources.ignore_env != jekyll.environment and site.resources.self_hosted %}
-    <link href="{{ site.data.origin[type].webfonts | relative_url }}" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous">
 
-  {% else %}
-    {% for cdn in site.data.origin[type].cdns %}
-      <link rel="preconnect" href="{{ cdn.url }}" {{ cdn.args }}>
-      <link rel="dns-prefetch" href="{{ cdn.url }}" {{ cdn.args }}>
-    {% endfor %}
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"
+    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
+    crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{{ site.data.origin[type].webfonts | relative_url }}">
+  <link rel="stylesheet"
+    href="{{ site.baseurl }}/assets/css/styles.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <script>
+    document.jQuery || document.write('<script src="{{ site.baseurl }}/assets/lib/jquery-3.4.1.min.js"><\/script>');
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.15.0/dist/umd/popper.min.js"
+    integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha256-5+02zu5UULQkO7w1GIr6vftCgMfFdZcAHeDtFnKZsBs=" crossorigin="anonymous"></script>
+
+  <script src="{{ site.baseurl }}/assets/js/dist/commons.js" async></script>
+
+  {% if jekyll.environment == 'production' %}
+    {% include google-analytics.html %}
   {% endif %}
 
-  <!-- GA -->
-  {% if jekyll.environment == 'production' and site.google_analytics.id != empty and site.google_analytics.id %}
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  {% endif %}
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ site.data.origin[type].bootstrap.css | relative_url}}">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
-
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-
-  {% if site.toc and page.toc %}
-    <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
-  {% endif %}
-
-  {% if page.layout == 'page' or page.layout == 'post' %}
-    <!-- Manific Popup -->
-    <link rel="stylesheet" href="{{ site.data.origin[type].magnific-popup.css | relative_url }}">
-  {% endif %}
-
-  <!-- JavaScript -->
-
-  {% unless site.theme_mode %}
-    {% include mode-toggle.html %}
-  {% endunless %}
-
-  {% include metadata-hook.html %}
 </head>

@@ -1,70 +1,49 @@
-<!-- The Top Bar -->
+<!--
+  The Top Bar
+  © 2017-2019 Cotes Chung
+  MIT License
+-->
+<div id="topbar" class="bg-white row justify-content-center topbar-down">
 
-<div id="topbar-wrapper">
-  <div
-    id="topbar"
-    class="container d-flex align-items-center justify-content-between h-100"
-  >
+  <div id="topbar-main" class="d-flex h-100 align-items-center justify-content-between col-12 col-md-12 col-lg-11 col-xl-11 pl-md-2 pr-md-2 pl-lg-2 pr-lg-2">
+
     <span id="breadcrumb">
-      {% assign paths = page.url | split: '/' %}
+      {% for item in page.breadcrumb %}
+        {% if item.url %}
+        <span>
+          <a href="{{ site.baseurl }}{{ item.url | remove: '.html'}}">
+            {{ item.label }}
+          </a>
+        </span>
+        {% else %}
+          <span>{{ item.label }}</span>
+        {% endif %}
+      {% endfor %}
 
-      {% if paths.size == 0 or page.layout == 'home' %}
-        <!-- index page -->
-        <span>{{ site.data.locales[include.lang].tabs.home | capitalize }}</span>
+      {% unless page.layout == "home" %}
+        <span>{{ page.title }}</span>
+      {% endunless %}
 
-      {% else %}
-        {% for item in paths %}
-          {% if forloop.first %}
-            <span>
-              <a href="{{ '/' | relative_url }}">
-                {{ site.data.locales[include.lang].tabs.home | capitalize }}
-              </a>
-            </span>
-
-          {% elsif forloop.last %}
-            {% if page.collection == 'tabs' %}
-              <span>{{ site.data.locales[include.lang].tabs[item] | default: page.title }}</span>
-            {% else %}
-              <span>{{ page.title }}</span>
-            {% endif %}
-
-          {% elsif page.layout == 'category' or page.layout == 'tag' %}
-            <span>
-              <a href="{{ item | relative_url }}">
-                {{ site.data.locales[include.lang].tabs[item] | default: page.title }}
-              </a>
-            </span>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    </span>
-    <!-- endof #breadcrumb -->
+    </span><!-- endof #breadcrumb -->
 
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
     <div id="topbar-title">
-      {% if page.layout == 'home' %}
-        {{- site.data.locales[include.lang].title | default: site.title -}}
-      {% elsif page.collection == 'tabs' or page.layout == 'page' %}
-        {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
-        {{- site.data.locales[include.lang].tabs[tab_key] | default: page.title -}}
-      {% else %}
-        {{- site.data.locales[include.lang].layout[page.layout] | default: page.layout | capitalize -}}
-      {% endif %}
+    {% if page.location %}
+      {{- page.location -}}
+    {% elsif page.layout == "home" %}
+      {{- site.title -}}
+    {% else %}
+      {{- page.title -}}
+    {% endif %}
     </div>
 
     <i id="search-trigger" class="fas fa-search fa-fw"></i>
-    <span id="search-wrapper" class="align-items-center">
+    <span id="search-wrap">
       <i class="fas fa-search fa-fw"></i>
-      <input
-        class="form-control"
-        id="search-input"
-        type="search"
-        aria-label="search"
-        autocomplete="off"
-        placeholder="{{ site.data.locales[include.lang].search.hint | capitalize }}..."
-      >
+      <input class="form-control" id="search-input" type="search" placeholder="{{ site.data.label.search_hint }}...">
     </span>
-    <span id="search-cancel">{{ site.data.locales[include.lang].search.cancel }}</span>
+    <a href="javascript:;">Cancel</a>
   </div>
+
 </div>

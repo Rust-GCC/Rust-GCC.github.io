@@ -1,133 +1,117 @@
 ---
-layout: page
-refactor: true
-panel_includes:
-  - toc
-tail_includes:
-  - related-posts
-  - post-nav
-  - comments
+layout: default
+# The posts' layout
+# © 2017-2019 Cotes Chung
+# MIT Licensed
 ---
 
-{% include lang.html %}
+{% include date-format.html %}
 
-<h1 data-toc-skip>{{ page.title }}</h1>
+<div class="col-12 col-lg-11 col-xl-8">
+  <div id="post-wrap" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 pl-xl-3">
+    <div class="post">
+      <h1 data-toc-skip>{{ page.title }}</h1>
+      <div class="post-meta text-muted d-flex flex-column">
+        <!-- Published Date and Categoreis -->
+        <div>
+          <span class="timeago" data-toggle="tooltip" title="{{ page.date | date: TOOLTIP_DATE }}">
+            {{ page.date | date: POST_DATE }}
+            <i class="hidden">{{ page.date | date_to_xmlschema }}</i>
+          </span>
+        {% if page.categories.size > 0 %}on{% endif %}
+        {% for category in page.categories %}
+          <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase }}/'>{{ category }}</a>
+          {%- unless forloop.last -%}, {%- endunless -%}
+        {% endfor %}
+        </div>
+        <!-- lastmod -->
+        {% if page.seo.date_modified > page.date %}
+        <div>
+          Updated
+          <span class="timeago lastmod" data-toggle="tooltip" title="{{ page.seo.date_modified | date: TOOLTIP_DATE }}">
+            {{ page.seo.date_modified | date: POST_DATE }}
+            <i class="hidden">{{ page.seo.date_modified | date_to_xmlschema}}</i>
+          </span>
+        </div>
+        {% endif %}
+        <!-- page views -->
+        {% if site.google_analytics.pv %}
+        <div>
+          <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin"></i></span> views
+        </div>
+        {% endif %}
+      </div> <!-- .post-meta -->
 
-<div class="post-meta text-muted">
-    <!-- published date -->
-    <span>
-      {{ site.data.locales[lang].post.posted }}
-      {% include datetime.html date=page.date tooltip=true lang=lang %}
-    </span>
+      <div class="post-content">
+        {% if page.image %}
+        <img src="{{ page.image }}" class="img-rounded">
+        {% endif %}
+        {{ content }}
+      </div><!-- .post-content -->
 
-    <!-- lastmod date -->
-    {% if page.last_modified_at and page.last_modified_at != page.date %}
-    <span>
-      {{ site.data.locales[lang].post.updated }}
-      {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
-    </span>
+      <div class="post-tail text-muted">
+        <!-- Tags -->
+        {% if page.tags.size > 0 %}
+        <div class="mb-2">
+          {% for tag in page.tags %}
+          <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase }}/"
+            class="post-tag no-text-decoration" >
+            {{- tag -}}
+          </a>{%- if forloop.last != true -%}&ensp;{%- endif -%}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div><!-- endof .post-tail -->
+
+    </div> <!-- .post -->
+
+    <div class="post-pager d-flex justify-content-between">
+    {% if page.previous.url %}
+      <a href="{{ site.baseurl }}{{page.previous.url}}" class="btn btn-outline-primary">
+    {% else %}
+      <a href="javascript:;" class="btn btn-outline-primary disabled">
+    {% endif %}
+        <i class="fas fa-angle-left mr-1"></i>
+        OLDER POST
+      </a>
+
+    {% if page.next.url %}
+      <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary">
+    {% else %}
+      <a href="javascript:;" class="btn btn-outline-primary disabled">
+    {% endif %}
+      NEWER POST
+      <i class="fas fa-angle-right ml-1"></i>
+      </a>
+    </div> <!-- end .post-pager -->
+
+    {% if site.disqus.comments and page.comments %}
+      {% include disqus.html %}
+    {% else %}
+      <br>
     {% endif %}
 
-  {% if page.image %}
-    {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
-    {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
-    {% capture alt %}alt="{{ page.image.alt | default: "Preview Image" }}"{% endcapture %}
+  </div> <!-- #post-wrap -->
+</div> <!-- div.col-12..col-lg-11.col-xl-8 -->
 
-    {% capture lqip %}
-      {% if page.image.lqip %}
-        lqip="{{ page.image.lqip }}"
-      {% endif %}
-    {% endcapture %}
-
-    <div class="mt-3 mb-3">
-      <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip | strip }}>
-      {%- if page.image.alt -%}
-        <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
-      {%- endif -%}
-    </div>
-  {% endif %}
-
-  <div class="d-flex justify-content-between">
-    <!-- author(s) -->
-    <span>
-      {% if page.author %}
-        {% assign authors = page.author %}
-      {% elsif page.authors %}
-        {% assign authors = page.authors %}
-      {% endif %}
-
-      {{ site.data.locales[lang].post.written_by }}
-
-      <em>
-      {% if authors %}
-        {% for author in authors %}
-          <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
-          {% unless forloop.last %}</em>, <em>{% endunless %}
-        {% endfor %}
-      {% else %}
-        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
-      {% endif %}
-      </em>
-    </span>
-
-    <div>
-      <!-- read time -->
-      {% include read-time.html content=content prompt=true lang=lang %}
-    </div>
-
-  </div> <!-- .d-flex -->
-
-</div> <!-- .post-meta -->
-
-<div class="post-content">
-  {{ content }}
-</div>
-
-<div class="post-tail-wrapper text-muted">
-
-  <!-- categories -->
-  {% if page.categories.size > 0 %}
-  <div class="post-meta mb-3">
-    <i class="far fa-folder-open fa-fw me-1"></i>
-    {% for category in page.categories %}
-      <a href='{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/'>{{ category }}</a>
-      {%- unless forloop.last -%}, {%- endunless -%}
-    {% endfor %}
+<div id="post-panel" class="col-xl-3 pl-2">
+  {% include panel.html %}
+  {% if site.toc and page.toc %}
+  <div id="toc-wrap" class="topbar-down pr-4">
+    <h3 data-toc-skip class="pl-3 pt-2">
+      {{ site.data.label.panel.toc }}
+    </h3>
+    <nav id="toc" data-toggle="toc"></nav>
   </div>
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.css" />
+  <script src="{{ site.baseurl }}/assets/lib/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script>
   {% endif %}
+</div> <!-- #post-panel -->
 
-  <!-- tags -->
-  {% if page.tags.size > 0 %}
-  <div class="post-tags">
-    <i class="fa fa-tags fa-fw me-1"></i>
-      {% for tag in page.tags %}
-      <a href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"
-          class="post-tag no-text-decoration" >
-        {{- tag -}}
-      </a>
-      {% endfor %}
-  </div>
-  {% endif %}
+<script src="{{ site.baseurl }}/assets/js/dist/timeago.min.js"></script>
 
-  <div class="post-tail-bottom
-    d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
-    <div class="license-wrapper">
-
-      {% if site.data.locales[lang].copyright.license.template %}
-
-        {% capture _replacement %}
-        <a href="{{ site.data.locales[lang].copyright.license.link }}">
-          {{ site.data.locales[lang].copyright.license.name }}
-        </a>
-        {% endcapture %}
-
-        {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
-
-      {% endif %}
-    </div>
-
-    {% include post-sharing.html lang=lang %}
-
-  </div><!-- .post-tail-bottom -->
-
-</div><!-- div.post-tail-wrapper -->
+{% if site.google_analytics.pv %}
+<script src="{{ site.baseurl }}/assets/js/dist/countUp.min.js" async></script>
+<script src="{{ site.baseurl }}/assets/js/dist/pageviews.min.js" async></script>
+{% endif %}

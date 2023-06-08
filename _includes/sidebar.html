@@ -1,104 +1,65 @@
-<!-- The Side Bar -->
+<!--
+  The Side Bar
+  © 2017-2019 Cotes Chung
+  MIT License
+-->
 
-<div id="sidebar" class="d-flex flex-column align-items-end">
-  <div class="profile-wrapper">
-    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
-      {% if site.avatar != empty and site.avatar %}
-        {% capture avatar_url %}
-            {% if site.avatar contains '://' %}
-              {{ site.avatar }}
-            {% elsif site.img_cdn != empty and site.img_cdn %}
-              {{ site.avatar | prepend: site.img_cdn }}
-            {% else %}
-              {{ site.avatar | relative_url }}
-            {% endif %}
-          {% endcapture %}
-        <img src="{{ avatar_url | strip }}" width="112" height="112" alt="avatar" onerror="this.style.display='none'">
-      {% endif %}
-    </a>
-
-    <div class="site-title">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    </div>
-    <div class="site-subtitle fst-italic">{{ site.tagline }}</div>
-  </div>
-  <!-- .profile-wrapper -->
-
-  <ul class="nav flex-column flex-grow-1 w-100 ps-0">
-    <!-- home -->
-    <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
-      <a href="{{ '/' | relative_url }}" class="nav-link">
-        <i class="fa-fw fas fa-home"></i>
-        <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+<div id="nav-wrap">
+  <div id="profile-wrap" class="d-flex justify-content-center">
+    <div id="profile">
+      <a href="{{ site.baseurl }}/" alt="profile-photo">
+        {% assign profile_img = site.logo %}
+        {% if profile_img | slice: 0 == '/' %}
+          {% assign profile_img = profile_img | prepend: site.baseurl %}
+        {% endif %}
+        <img src="{{ profile_img }}"></img>
       </a>
-    </li>
-    <!-- the real tabs -->
-    {% for tab in site.tabs %}
-      <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-        <a href="{{ tab.url | relative_url }}" class="nav-link">
-          <i class="fa-fw {{ tab.icon }}"></i>
-          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-
-          <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-        </a>
-      </li>
-      <!-- .nav-item -->
-    {% endfor %}
-  </ul>
-  <!-- ul.nav.flex-column -->
-
-  <div class="sidebar-bottom d-flex flex-wrap  align-items-center w-100">
-    {% unless site.theme_mode %}
-      <button class="mode-toggle btn" aria-label="Switch Mode">
-        <i class="fas fa-adjust"></i>
-      </button>
-
-      {% if site.data.contact.size > 0 %}
-        <span class="icon-border"></span>
-      {% endif %}
-    {% endunless %}
-
-    {% for entry in site.data.contact %}
-      {% case entry.type %}
-        {% when 'github', 'twitter' %}
-          {%- capture url -%}
-            https://{{ entry.type }}.com/{{ site[entry.type].username }}
-          {%- endcapture -%}
-        {% when 'email' %}
-          {% assign email = site.social.email | split: '@' %}
-          {%- capture url -%}
-            javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
-          {%- endcapture -%}
-        {% when 'rss' %}
-          {% assign url = '/feed.xml' | relative_url %}
-        {% else %}
-          {% assign url = entry.url %}
-      {% endcase %}
-
-      {% if url %}
-        <a
-          href="{{ url }}"
-          aria-label="{{ entry.type }}"
-          {% assign link_types = '' %}
-
-          {% unless entry.noblank %}
-            target="_blank"
-            {% assign link_types = 'noopener noreferrer' %}
-          {% endunless %}
-
-          {% if entry.type == 'mastodon' %}
-            {% assign link_types = link_types | append: ' me' | strip %}
-          {% endif %}
-
-          {% unless link_types == empty %}
-            rel="{{ link_types }}"
-          {% endunless %}
-        >
-          <i class="{{ entry.icon }}"></i>
-        </a>
-      {% endif %}
-    {% endfor %}
+    </div>
   </div>
-  <!-- .sidebar-bottom -->
+  <div id="site-title" class="d-flex justify-content-center align-items-center">
+    <a href="{{ site.baseurl }}/">{{- site.title -}}</a>
+  </div>
+  <div id="site-subtitle" class="font-italic">{{ site.description }}</div>
+  <ul class="nav flex-column">
+
+  {% assign page_urls = page.url | split: "/" %}
+
+  {% for item in site.data.label.tabs %}
+    {% assign ref = site.baseurl | append: "/" %}
+
+    {% if item.path %}
+      {% assign ref = ref | append: item.path | append: "/" %}
+      {% if item.url %}
+        {% assign ref = ref | append: item.url | append: "/" %}
+      {% endif %}
+    {% endif %}
+
+    <li class="nav-item d-flex justify-content-center
+      {% if item.url == page_urls.last or
+        item.name == "Home" and page.layout == "home" %}active{% endif %}">
+      <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100"><!-- <i class="{{ item.icon }}"></i> -->
+      {{ item.name | upcase }}
+      </a>
+    </li> <!-- .nav-item -->
+  {% endfor %}
+
+    <span class="cursor"></span>
+  </ul> <!-- ul.nav.flex-column -->
+
+</div><!-- #nav-wrap -->
+
+<div class="contact d-flex justify-content-around mt-3">
+  <a href="https://github.com/{{ site.github.username }}" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank">
+    <i class="fab fa-twitter"></i>
+  </a>
+  {% assign email = site.social.email | split: '@' %}
+  <a href="javascript:window.open('mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@'))">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="{{ site.baseurl }}/feed.xml" target="_blank">
+    <i class="fas fa-rss"></i>
+  </a>
 </div>
-<!-- #sidebar -->

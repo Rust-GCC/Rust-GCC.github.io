@@ -1,0 +1,420 @@
+## Overview
+
+Thanks again to [Open Source Security, inc](https://opensrcsec.com/) and
+[Embecosm](https://www.embecosm.com/) for their ongoing support for this
+project.
+
+### Milestone Progress
+
+GCC 13.1 is on track to be released this week, and you might be a little
+surprised to see that `gccrs` will not be included in the release. This
+was done for multiple reasons, which you can read about in the blogpost
+we have published on the subject
+[here](https://rust-gcc.github.io/2023/04/24/gccrs-and-gcc13-release.html).
+The reasoning boils down to "`gccrs` is not yet ready, nor is it useful
+for general users, and needs a little more time in the oven". If you are
+still interested in trying out the compiler or hacking on it, we mention
+the alternatives in the blogpost.
+
+Many contributors have submitted PRs this month, with over 50
+contributions and three new contributors once again. Thank you all! The
+code submitted is extremely high quality, and fixes some very important
+issues (and sometimes, long-standing ones!) which you can read about in
+the various pull-requests linked below. We are also nearing the end of
+the review period for this year's GSoC, meaning the results will be
+announced shortly - we are looking forward to working with the chosen
+students. Thank you again for your interest this year!
+
+We are in the process of preparing a talk for [EuroRust
+2023](https://eurorust.eu/), which we will be attending and where we
+hope to speak. We are looking forward to meeting with all of you once
+again!
+
+Finally, we spent some time this month putting together new milestones
+to better reflect the upcoming work on the compiler. You can find a list
+of these milestones at the end of this report.
+
+On the technical side of things, we are still progressing towards the
+compilation of the core Rust library. Philip has spent a lot of time on
+our type system once again, cleaning many HIR-related bugs which occured
+with iterators as well as other complex Rust traits. Arthur has kept
+working on the macro side of things, with more fixes regarding macro
+imports, exports, as well as derive macros. [Pierre-Emmanuel
+Patry](https://github.com/P-E-P) is doing some great work on our build
+system and procedural macro library, and we hope to soon expand our
+first user-defined macro!
+
+### Community call
+
+We will have our next monthly community call on the 15th of May 2023.
+You can subscribe to our calendar to see when the next one will be held.
+The call is open to everyone, even if you would just like to sit-in and
+listen. You can also subscribe to our
+[mailing-list](https://gcc.gnu.org/mailman/listinfo/gcc-rust) or join
+our [Zulip chat](https://gcc-rust.zulipchat.com) to be notified of
+upcoming events.
+
+-   Calendar ID:
+    7060a0923ffebd3cb52b1afef35a28ff7b64f05962c9af84c23b1847f1f5f894@group.calendar.google.com
+-   [Google calendar
+    link](https://calendar.google.com/calendar/embed?src=7060a0923ffebd3cb52b1afef35a28ff7b64f05962c9af84c23b1847f1f5f894%40group.calendar.google.com)
+-   [iCal
+    link](https://calendar.google.com/calendar/ical/7060a0923ffebd3cb52b1afef35a28ff7b64f05962c9af84c23b1847f1f5f894%40group.calendar.google.com/public/basic.ics)
+
+## Completed Activities
+
+-   Type check StructPatternFieldIdentPat
+    [PR2174](https://github.com/rust-gcc/gccrs/pull/2174)
+-   Lower StructPatternFieldIdentPat
+    [PR2173](https://github.com/rust-gcc/gccrs/pull/2173)
+-   gccrs: Improve operator overload check for recursive overload
+    [PR2171](https://github.com/rust-gcc/gccrs/pull/2171)
+-   qualified path syntax is used to disambiguate predicates
+    [PR2169](https://github.com/rust-gcc/gccrs/pull/2169)
+-   gccrs: resolve the associated<sub>predicate</sub> when mapping Fn
+    traits [PR2168](https://github.com/rust-gcc/gccrs/pull/2168)
+-   Add missing where clause lowering for Impl functions
+    [PR2167](https://github.com/rust-gcc/gccrs/pull/2167)
+-   Add accessors to HIR::StructPatternFieldIdentPat
+    [PR2164](https://github.com/rust-gcc/gccrs/pull/2164)
+-   gccrs: Minor tuning in AST dump
+    [PR2163](https://github.com/rust-gcc/gccrs/pull/2163)
+-   Add missing ABI mappings and check
+    [PR2162](https://github.com/rust-gcc/gccrs/pull/2162)
+-   Add mechanism use pattern information to improve type info
+    [PR2161](https://github.com/rust-gcc/gccrs/pull/2161)
+-   fix ICE with recursive function calls
+    [PR2160](https://github.com/rust-gcc/gccrs/pull/2160)
+-   gccrs: Fix ICE in assignment of error type bound predicates
+    [PR2159](https://github.com/rust-gcc/gccrs/pull/2159)
+-   gccrs: Fix ICE during method resolution
+    [PR2158](https://github.com/rust-gcc/gccrs/pull/2158)
+-   Track self as part of TypeBoundPredicate
+    [PR2157](https://github.com/rust-gcc/gccrs/pull/2157)
+-   Fix -frust-dump-\* error messages
+    [PR2155](https://github.com/rust-gcc/gccrs/pull/2155)
+-   Resolve identifier-pattern struct pattern fields
+    [PR2151](https://github.com/rust-gcc/gccrs/pull/2151)
+-   Add libgrust to clang-format checker
+    [PR2149](https://github.com/rust-gcc/gccrs/pull/2149)
+-   libproc<sub>macro</sub>: fix literal drop
+    [PR2147](https://github.com/rust-gcc/gccrs/pull/2147)
+-   patterns: Add execution testcases to verify proper pattern matching
+    [PR2145](https://github.com/rust-gcc/gccrs/pull/2145)
+-   parser: Parse reference patterns correctly
+    [PR2138](https://github.com/rust-gcc/gccrs/pull/2138)
+-   Fix translation mistakes 2023 in GCC/Rust \[PR108890\]
+    [PR2137](https://github.com/rust-gcc/gccrs/pull/2137)
+-   Add frust-extern option
+    [PR2134](https://github.com/rust-gcc/gccrs/pull/2134)
+-   Merge upstream, releases/gcc-13 branch point
+    [PR2130](https://github.com/rust-gcc/gccrs/pull/2130)
+-   Various tokenstream fixes
+    [PR2128](https://github.com/rust-gcc/gccrs/pull/2128)
+-   Fix generic parameter parsing loop
+    [PR2125](https://github.com/rust-gcc/gccrs/pull/2125)
+-   Lower ErrorPropagationExpr from AST to HIR
+    [PR2124](https://github.com/rust-gcc/gccrs/pull/2124)
+-   Fix Bad formatting in AST expanded dump with associated types
+    [PR2122](https://github.com/rust-gcc/gccrs/pull/2122)
+-   libproc<sub>macro</sub> : Add Tokenstream type
+    [PR2120](https://github.com/rust-gcc/gccrs/pull/2120)
+-   libproc<sub>macro</sub>: Add Punct type
+    [PR2119](https://github.com/rust-gcc/gccrs/pull/2119)
+-   Fix inner attribute tokenstream
+    [PR2118](https://github.com/rust-gcc/gccrs/pull/2118)
+-   libproc<sub>macro</sub>: Add Ident type
+    [PR2117](https://github.com/rust-gcc/gccrs/pull/2117)
+-   Placate clang-format,
+    'gcc/rust/rust-lang.cc:grs<sub>langhooktypeformode</sub>'
+    [PR2116](https://github.com/rust-gcc/gccrs/pull/2116)
+-   Merge upstream (dummy), "Rust front-end update 2023-04-05"
+    [PR2115](https://github.com/rust-gcc/gccrs/pull/2115)
+-   Deleted the as<sub>string</sub> AST dump
+    [PR2114](https://github.com/rust-gcc/gccrs/pull/2114)
+-   Merge upstream, last commit before "Rust front-end update
+    2023-04-05" [PR2112](https://github.com/rust-gcc/gccrs/pull/2112)
+-   Unify HIR::ExprStmt deriving classes
+    [PR2111](https://github.com/rust-gcc/gccrs/pull/2111)
+-   Lower \`\`\`if let\`\`\`
+    [PR2110](https://github.com/rust-gcc/gccrs/pull/2110)
+-   Handle underscore in MacroMatch.
+    [PR2109](https://github.com/rust-gcc/gccrs/pull/2109)
+-   gccrs: Introduce AST::Visitable class for AST
+    [PR2107](https://github.com/rust-gcc/gccrs/pull/2107)
+-   libproc<sub>macro</sub>: Add literal type
+    [PR2104](https://github.com/rust-gcc/gccrs/pull/2104)
+-   Fix StructExprStructFields tokenstream
+    [PR2100](https://github.com/rust-gcc/gccrs/pull/2100)
+-   ast: Add difference between attributes
+    [PR2099](https://github.com/rust-gcc/gccrs/pull/2099)
+-   parser: macro: reject separator in \`?\` repetition
+    [PR2098](https://github.com/rust-gcc/gccrs/pull/2098)
+-   Support qualified trait item call expression
+    [PR2097](https://github.com/rust-gcc/gccrs/pull/2097)
+-   Tokenstream fixes
+    [PR2093](https://github.com/rust-gcc/gccrs/pull/2093)
+-   Handle "fn" and "fn<sub>mut</sub>" lang items
+    [PR2091](https://github.com/rust-gcc/gccrs/pull/2091)
+-   break rust 💥 [PR2086](https://github.com/rust-gcc/gccrs/pull/2086)
+-   ast: Move implementation out of rust-ast
+    [PR2085](https://github.com/rust-gcc/gccrs/pull/2085)
+-   gccrs: Fix ICE using constructors for intilizers in statics
+    [PR2083](https://github.com/rust-gcc/gccrs/pull/2083)
+-   Add derive proc<sub>macro</sub> expansion stubs
+    [PR2076](https://github.com/rust-gcc/gccrs/pull/2076)
+-   gccrs: Add testcase to show matching of enum variants
+    [PR2072](https://github.com/rust-gcc/gccrs/pull/2072)
+-   Add error message for AltPattern in let statements
+    [PR2009](https://github.com/rust-gcc/gccrs/pull/2009)
+-   Unify AST::IfLetExprConseqIf{,Let} into AST::IfLetExprConseqElse
+    [PR2002](https://github.com/rust-gcc/gccrs/pull/2002)
+-   Unify AST::IfExprConseqIf{,Let} into AST::IfExprConseqElse
+    [PR2001](https://github.com/rust-gcc/gccrs/pull/2001)
+
+### Contributors this month
+
+-   [Sergei Bugaev](https://github.com/bugaevc) (new contributor!)
+-   [TieWay59](https://github.com/TieWay59) (new contributor!)
+-   [ArberSephirotheca](https://github.com/ArberSephirotheca) (new
+    contributor!)
+-   [Sebastian Kirmayer](https://github.com/kirmayer-gnu) (new
+    contributor!)
+-   [Pierre-Emmanuel Patry](https://github.com/P-E-P)
+-   [dkm](https://github.com/dkm)
+-   [tschwinge](https://github.com/tschwinge)
+-   [powerboat9](https://github.com/powerboat9)
+-   [mvvsmk](https://github.com/mvvsmk)
+
+### Overall Task Status
+
+| Category    | Last Month | This Month | Delta |
+|-------------|------------|------------|-------|
+| TODO        | 218        | 219        | +1    |
+| In Progress | 43         | 49         | +6    |
+| Completed   | 614        | 639        | +25   |
+
+### Test Cases
+
+| TestCases | Last Month | This Month | Delta |
+|-----------|------------|------------|-------|
+| Passing   | 5728       | 7737       | +2009 |
+| Failed    | \-         | \-         | \-    |
+| XFAIL     | 40         | 53         | +13   |
+| XPASS     | \-         | \-         | \-    |
+
+### Bugs
+
+| Category    | Last Month | This Month | Delta |
+|-------------|------------|------------|-------|
+| TODO        | 65         | 66         | +1    |
+| In Progress | 18         | 22         | +4    |
+| Completed   | 287        | 304        | +17   |
+
+### Milestones Progress
+
+Note that the intrinsics milestone percentage on github is not
+representative: It shows a 73% completion rate, but does not take into
+account the tracking issues with dozens of unresolved items. Thus the
+percentage is computed using the sum of issues and tracked items done
+divided by the sums of issues and tracked items overall. Similarly, the
+Update GCC's master branch milestone contains a [tracking
+issue](https://github.com/rust-gcc/gccrs/issues/1705) containing over
+200 tasks. The percentage shown here takes this into account.
+
+| Milestone                         | Last Week | This Week | Delta | Start Date    | Completion Date | Target        |
+|-----------------------------------|-----------|-----------|-------|---------------|-----------------|---------------|
+| Data Structures 1 - Core          | 100%      | 100%      | \-    | 30th Nov 2020 | 27th Jan 2021   | 29th Jan 2021 |
+| Control Flow 1 - Core             | 100%      | 100%      | \-    | 28th Jan 2021 | 10th Feb 2021   | 26th Feb 2021 |
+| Data Structures 2 - Generics      | 100%      | 100%      | \-    | 11th Feb 2021 | 14th May 2021   | 28th May 2021 |
+| Data Structures 3 - Traits        | 100%      | 100%      | \-    | 20th May 2021 | 17th Sep 2021   | 27th Aug 2021 |
+| Control Flow 2 - Pattern Matching | 100%      | 100%      | \-    | 20th Sep 2021 | 9th Dec 2021    | 29th Nov 2021 |
+| Macros and cfg expansion          | 100%      | 100%      | \-    | 1st Dec 2021  | 31st Mar 2022   | 28th Mar 2022 |
+| Imports and Visibility            | 100%      | 100%      | \-    | 29th Mar 2022 | 13th Jul 2022   | 27th May 2022 |
+| Const Generics                    | 100%      | 100%      | \-    | 30th May 2022 | 10th Oct 2022   | 17th Oct 2022 |
+| Initial upstream patches          | 100%      | 100%      | \-    | 10th Oct 2022 | 13th Nov 2022   | 13th Nov 2022 |
+| Upstream initial patchset         | 100%      | 100%      | \-    | 13th Nov 2022 | 13th Dec 2022   | 19th Dec 2022 |
+| Update GCC's master branch        | 100%      | 100%      | \-    | 1st Jan 2023  | 21st Feb 2023   | 3rd Mar 2023  |
+| Final set of upstream patches     | 74%       | 96%       | +22%  | 16th Nov 2022 | \-              | 30th Apr 2023 |
+| Borrow Checking 1                 | 0%        | 0%        | \-    | TBD           | \-              | 15th Aug 2023 |
+| AST Pipeline for libcore 1.49     | 0%        | 20%       | +20%  | 13th Apr 2023 | \-              | 1st Jun 2023  |
+| HIR Pipeline for libcore 1.49     | 0%        | 40%       | +40%  | 13th Apr 2023 | \-              | TBD           |
+| Procedural Macros 1               | 0%        | 45%       | +45%  | 13th Apr 2023 | \-              | 6th Aug 2023  |
+| GCC 13.2 Release                  | 0%        | 0%        | \-    | 13th Apr 2023 | \-              | 15th Jul 2023 |
+| GCC 14 Stage 3                    | 0%        | 0%        | \-    | TBD           | \-              | 1st Nov 2023  |
+| Rustc Testsuite Prerequisistes    | 0%        | 0%        | \-    | TBD           | \-              | 1st Sep 2023  |
+| Intrinsics and builtins           | 18%       | 18%       | \-    | 6th Sep 2022  | \-              | TBD           |
+| Const Generics 2                  | 0%        | 0%        | \-    | TBD           | \-              | TBD           |
+| Rust-for-Linux compilation        | 0%        | 0%        | \-    | TBD           | \-              | TBD           |
+
+### Testing project
+
+The testing project is on hold as we try and figure out some of the
+issues we're running into with GitHub and our various automations around
+it.
+
+## Planned Activities
+
+-   Keep going on derive macros
+-   Fix remaining type systems bugs for libcore 1.49
+-   Start expanding custom procedural macros in our pipeline
+
+## Detailed changelog
+
+### Builtin derive macros
+
+While [Pierre-Emmanuel Patry](https://github.com/P-E-P) is working on
+support for custom procedural macros including \`derive\` macros, Arthur
+is spending some time on the implementation of builtin `derive` macros -
+there are only a handful of these macros (`Clone`, `Copy`, `Debug`,
+`Default`, `Hash`, `{Partial}Eq` and `{Partial}Ord`) but they are used
+very often in Rust code. The concept of deriving is well known to
+functional programmers, and in Rust it allows users to implement simple
+traits for their custom types without the extra boilerplate of creating
+an `impl` block.
+
+A simple example we have been working on is the following:
+
+``` rust
+pub trait Clone {
+    fn clone(&self) -> Self;
+}
+
+pub trait Copy {}
+
+impl Copy for i32 {}
+
+impl<T> Clone for T
+where
+    T: Copy,
+{
+    fn clone(&self) -> Self {
+        *self
+    }
+}
+
+#[derive(Clone)]
+struct S(i32, i32);
+
+fn main() -> i32 {
+    let a = S(15, 15);
+    let b = a.clone();
+
+    b.0 - b.1
+}
+```
+
+Upon seeing the `#[derive(Clone)]` attribute, the compiler will generate
+an `impl` block for the structure `S` allowing us to call the `clone`
+method on it, as shown when initializing the `b` variable.
+
+Here is a little comparison of the code generated by `rustc` and
+`gccrs`:
+
+`rustc` with `-Z unpretty=expanded`:
+
+``` rust
+
+#![feature(prelude_import)]
+#![no_std]
+#[prelude_import]
+use ::std::prelude::v1::*;
+#[macro_use]
+extern crate std;
+pub trait Clone {
+    fn clone(&self)
+    -> Self;
+}
+
+pub trait Copy { }
+
+impl Copy for i32 { }
+
+impl <T> Clone for T where T: Copy {
+    fn clone(&self) -> Self { *self }
+}
+
+struct S(i32, i32);
+#[automatically_derived]
+#[allow(unused_qualifications)]
+impl ::core::clone::Clone for S {
+    #[inline]
+    fn clone(&self) -> S {
+        match *self {
+            S(ref __self_0_0, ref __self_0_1) =>
+            S(::core::clone::Clone::clone(&(*__self_0_0)),
+              ::core::clone::Clone::clone(&(*__self_0_1))),
+        }
+    }
+}
+
+fn main() -> i32 {
+    let a = S(15, 15);
+    let b = a.clone();
+
+    b.0 - b.1
+}
+```
+
+and `gccrs` with `-frust-dump-all`:
+
+``` rust
+pub trait Clone{
+    fn clone(&self) -> Self;
+
+}
+
+pub trait Copy{}
+
+impl Copy for i32 {
+
+}
+
+impl Clone for T {
+    fn clone(&self) -> Self {
+        *self /* tail expr */
+
+    }
+
+
+}
+
+impl Clone for S {
+    fn clone(&self) -> Self {
+        S(
+            Clone::clone(
+                &self.0,
+            ),
+            Clone::clone(
+                &self.1,
+            ),
+        ) /* tail expr */
+
+    }
+
+
+}
+
+struct S(i32, i32);
+
+fn main() -> i32 {
+    let a = S(
+        15,
+        15,
+    );
+    let b = ;
+    b.0 - b.1 /* tail expr */
+
+}
+```
+
+Since we are not yet able to link the `core` crate to the Rust projects
+we compile, we are not calling into `::core::clone::Clone::clone` like
+`rustc` does - this is something that will be fixed as soon as we link
+against the `core` crate.
+
+We still have a lot of work to do, especially regarding the handling of
+more complex builtin derive macros such as `PartialOrd`. Our future work
+will also include enhancing the user experience with these macros, as
+some "derive-specific" errors need to be emitted in order to not confuse
+users.

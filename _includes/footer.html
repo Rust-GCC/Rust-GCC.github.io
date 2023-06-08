@@ -1,34 +1,24 @@
-<!-- The Footer -->
+<!--
+  The Footer
+  © 2017-2019 Cotes Chung
+  MIT License
+-->
 
-<footer>
-  <div class="container px-lg-4">
-    <div class="d-flex justify-content-center align-items-center text-muted mx-md-3">
-      <p>
-        {%- capture _platform -%}
-          <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-        {%- endcapture -%}
-
-        {%- capture _theme -%}
-          <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>
-        {%- endcapture -%}
-
-        {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
-      </p>
-
-      <p>
-        {{- '©' }}
-        {{ 'now' | date: '%Y' }}
-        <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-        {% if site.data.locales[include.lang].copyright.brief %}
-          <span
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="{{ site.data.locales[include.lang].copyright.verbose }}"
-          >
-            {{- site.data.locales[include.lang].copyright.brief -}}
-          </span>
-        {% endif %}
+<footer class="d-flex w-100 justify-content-center">
+  <div class="d-flex justify-content-between  align-items-center">
+    <div class="copyright">
+      {% assign first = site.first_run | plus: 0 %}
+      {% assign last = 'now' | date: "%Y" | plus: 0 %}
+      <p class="mb-0">
+        © {% if last > first %}{{ first }}-{% endif %}{{-last-}}
+        <a href="{{ site.social.links[0] }}" class="ml-1">{{ site.social.name }}</a>.
+        <br>Powered by <a href="https://jekyllrb.com" target="_blank">Jekyll</a> & <a href="https://github.com/cotes2020/jekyll-theme-chirpy/">Chirpy</a>, hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
       </p>
     </div>
-  </div>
+    <div class="license">
+      <p class="mb-0">
+        The blog posts on this site are licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </p>
+    </div>
+  </div> <!-- div.d-flex -->
 </footer>
