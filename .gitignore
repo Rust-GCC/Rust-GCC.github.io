@@ -1,0 +1,4 @@
+.bundle
+.jekyll-cache
+vendor
+_site
