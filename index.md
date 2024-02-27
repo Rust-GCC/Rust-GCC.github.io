@@ -36,6 +36,7 @@ We appreciate all feedback from individuals on github.
 
 * [Philip Herron](https://github.com/philberty/)
 * [Arthur Cohen](https://github.com/CohenArthur)
+* [Pierre-Emmanuel Patry](https://github.com/P-E-P)
 * [Thomas Schwinge](https://github.com/tschwinge)
 * [SimplyTheOther](https://github.com/simplytheother)
 * [Mark Wielaard](https://gnu.wildebeest.org/blog/mjw/)
