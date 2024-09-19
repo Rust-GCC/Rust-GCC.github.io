@@ -50,6 +50,8 @@ We appreciate all feedback from individuals on github.
 * Github: [https://github.com/Rust-GCC](https://github.com/Rust-GCC)
 * Zulip: [https://gcc-rust.zulipchat.com/](https://gcc-rust.zulipchat.com/)
 * Twitter: [https://twitter.com/gcc_rust](https://twitter.com/gcc_rust)
+* Mailing-list: [gcc-rust@gcc.gnu.org](https://gcc.gnu.org/mailman/listinfo/gcc-rust)
+* IRC: #gccrust on [oftc.net](https://oftc.net/)
 
 ### RSS
 
