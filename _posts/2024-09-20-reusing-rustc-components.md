@@ -29,3 +29,11 @@ tags:
   2. We then use gccrs to build them and link to ourselves
 7. Bootstrap diagram
 
+```mermaid
+flowchart TD;
+    bootstrapping --> stage1[gccrs-stage1];
+    bootstrapping --> stage2[gccrs-stage2];
+    stage1 -- `gccrs-stage1 -frust-disable-borrowck ./polonius` --> polonius[polonius-stage1];
+    stage2 -- `gccrs-stage2 ./polonius ...` --> valid
+    polonius -- `.. with polonius-stage1 as a borrow checker` --> valid[polonius-stage2: validated polonius library, ready to ship with gccrs-stage2]
+```
