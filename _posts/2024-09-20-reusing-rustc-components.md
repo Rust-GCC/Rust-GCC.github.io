@@ -7,6 +7,8 @@ tags:
     - compiler
     - rustc
     - borrow-checker
+    - format-args
+    - trait-solver
 ---
 
 1. Why
