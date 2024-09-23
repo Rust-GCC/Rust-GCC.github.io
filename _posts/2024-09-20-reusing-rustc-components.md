@@ -11,6 +11,10 @@ tags:
     - trait-solver
 ---
 
+In order to speed up development, as well as make sure `gccrs` exposes the exact same behavior as `rustc` in critical compiler passes, we have decided 
+
+_NOTE: Link to the RFC email_
+
 1. Why
   1. To speed up development
   2. To make sure we are doing exactly the same thing as rustc in those cases
@@ -31,11 +35,17 @@ tags:
   2. We then use gccrs to build them and link to ourselves
 7. Bootstrap diagram
 
+![Building gccrs with a borrow-checker](/images/reusing-rustc-components-1.svg)
+
+We can then use `gccrs-stage1` to borrow-check the `polonius` crate, and ensure that it is valid in that regard - otherwise, exit the bootstrapping process.
+
+_NOTE: Explain -DBOOTSTRAPPING_RUST_
+_NOTE: Talk about how we can disable some passes like borrow-checking, but for others we'll have to use mocking or our own, less-complete implementation_
+
 ```mermaid
 flowchart TD;
-    bootstrapping --> stage1[gccrs-stage1];
-    bootstrapping --> stage2[gccrs-stage2];
-    stage1 -- `gccrs-stage1 -frust-disable-borrowck ./polonius` --> polonius[polonius-stage1];
-    stage2 -- `gccrs-stage2 ./polonius ...` --> valid
-    polonius -- `.. with polonius-stage1 as a borrow checker` --> valid[polonius-stage2: validated polonius library, ready to ship with gccrs-stage2]
+    gpp[g++] -- Build gccrs with -DBOOTSTRAP_GCCRS --> stage0[gccrs-stage0.5]
+    stage0 -- Build polonius-engine crate --> polonius
+    gpp --> stage1[gccrs-stage1]
+    polonius -- Link to new build of gccrs --> stage1[gccrs-stage1]
 ```
