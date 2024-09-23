@@ -11,9 +11,16 @@ tags:
     - trait-solver
 ---
 
-In order to speed up development, as well as make sure `gccrs` exposes the exact same behavior as `rustc` in critical compiler passes, we have decided 
+In order to speed up development, as well as make sure `gccrs` exposes the exact same behavior as `rustc` in critical compiler passes, we decided last year to start reusing components and crates from the official Rust compiler where possible. These components range from external crates used by the compiler for certain `nightly` options to internal `rustc` worskspace crates. As expected however, these components are written in Rust - which poses an interesting challenge for `gccrs` to use them. The goal of this blogpost is to explore some of these components, explain why we are reusing them, and talk about how they will be integrated into the compiler once it is more complete.
 
-_NOTE: Link to the RFC email_
+## Which components?
+
+The first `rustc` component reused by `gccrs` was [`rustc_parse_format`](https://github.com/rust-lang/rust/tree/c22a4215a0f6fb676d3774d3763d9da1462414f5/compiler/rustc_parse_format), which we added at the beginning of the year in 2024. The role of this crate is to parse "Rust format strings" - which correspond to the various string templates used in string formatting and inline assembly. The role of that crate is to parse the template string, as well as each of the "pieces" used in the template string. For example, when looking at `println!("Hello {ferris}!")`, the parser will emit three "pieces" - two for the static strings `"Hello "` and `"!"`, and one for the named argument `ferris`. If you're thinking "Arthur, why didn't you just rewrite the parser, that sounds easy" well the answer is I am absolutely ass at writing parsers in C++. I need [`nom`](https://crates.io/crates/nom) or I can't function. Regardless, `rustc_parse_format` is a tiny `rustc` component, which in truth is not terribly difficult to implement. But tweaking the build system to allow the reuse of that component, as well as writing the various Rust <-> C++ interfaces needed for interacting with the `crate`, helped pave the way for the most crucial of the components we are currently reusing - `polonius`. `polonius` is the next generation Rust borrow-checker, and can alread be used on `rustc` with the nightly `-Z polonius` option. You can read more about polonius [here](https://rust-lang.github.io/polonius/).
+
+We plan on adding more components to `rustc` in the future where _NOTE: Reword "it makes sense"_
+
+_NOTE: Mention trait solver_
+_NOTE: Mention transmute project from Jack__
 
 1. Why
   1. To speed up development
