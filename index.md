@@ -44,6 +44,7 @@ We appreciate all feedback from individuals on github.
 * [David Faust](https://github.com/dafaust)
 * [Wenzhang Yang](https://github.com/thomasyonug)
 * [Philipp Krones](https://github.com/flip1995)
+* [Owen Avery](https://github.com/powerboat9)
 
 ### Get Involved
 
