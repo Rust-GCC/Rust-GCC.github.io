@@ -1,0 +1,29 @@
+name: Nightly Build of Reports Website
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'  # Every night at midnight
+
+jobs:
+  run:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Run generator
+        env:
+          REPORTS: https://github.com/Rust-GCC/reporting
+          WEBSITE: ..
+        run: |
+          cd generator
+          cargo run
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: nightly_build_gha
+          message: Nightly reports generation
+          add: './_posts/*.md'
